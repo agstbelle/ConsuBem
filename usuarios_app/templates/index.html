@@ -1,174 +1,35 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block pagina %}
-  <header id="header" class="header d-flex align-items-center ">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between ">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="{ static % 'img/logo1.svg' % }">
-        <h1>ConsuBem</h1>
-      </a>
+{%extends 'base.html'%}
+{%load static%}
+{%block conteudo%}
+
+  <body> <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-verde">
+        <div class="container">
+            <!-- Logo -->
+                <a class="navbar-brand" href="#">
+                    <img src="{% static 'img/logo.svg' %}" alt="Logo da Loja" width="70" height="70">
+                </a>
+
+                <!-- Barra de Pesquisa -->
+                <form class="form-inline my-2 my-lg-0 ml-3">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+                </form>
+
+                <!-- Carrinho -->
+                <a href="" class="ml-3">
+                    <img src="{% static 'img/login_cad.svg' %}" width="100" height="100" alt="login e cadastro">
+                </a>
+                <a href="#" class="ml-3">
+                    <img src="{% static 'img/bag.svg' %}" width="30" height="30" alt="login e cadastro">
+                </a>
+
+    </nav>
     </div>
-  </header>
-    <section id="portfolio" class="portfolio sections-bg-verde">
-      <div class="container" data-aos="fade-up">
-        <div class="section-header">
-          <h2>Portfolio</h2>
-          <p>Quam sed id excepturi ccusantium dolorem ut quis dolores nisi llum nostrum enim velit qui ut et autem uia
-            reprehenderit sunt deleniti</p>
-        </div>
-        <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry"
-          data-portfolio-sort="original-order" data-aos="fade-up" data-aos-delay="100">
-          <div>
-            <ul class="portfolio-flters">
-              <li data-filter="*" class="filter-active">Todos</li>
-              <li data-filter=".filter-app">Celulares</li>
-              <li data-filter=".filter-product">Eletrônicos</li>
-              <li data-filter=".filter-branding">Cosmeticos</li>
-              <li data-filter=".filter-books">Livros</li>
-            </ul>
-          </div>
-          <div class="row gy-4 portfolio-container">
-            <div class="col-xl-4 col-md-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <a href="{ % static 'img/portfolio/app-1.jpg' % }" data-gallery="portfolio-gallery-app" class="glightbox"><img
-                    src="{ % static 'img/portfolio/app-1.jpg' % }" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="" title="More Details">App 1</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-md-6 portfolio-item filter-product">
-              <div class="portfolio-wrap">
-                <a href="{ % static 'img/portfolio/product-1.jpg' % }" data-gallery="portfolio-gallery-app" class="glightbox"><img
-                    src="{ % static 'img/portfolio/product-1.jpg' % }" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="" title="More Details">Product 1</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-md-6 portfolio-item filter-branding">
-              <div class="portfolio-wrap">
-                <a href="{ % static 'img/portfolio/branding-1.jpg' % } " data-gallery="portfolio-gallery-app"
-                  class="glightbox"><img src="{ % static 'img/portfolio/branding-1.jpg' % }" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="" title="More Details">Branding 1</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-md-6 portfolio-item filter-books">
-              <div class="portfolio-wrap">
-                <a href="{ % staticfiles 'img/portfolio/books-1.jpg' % }" data-gallery="portfolio-gallery-app" class="glightbox"><img
-                    src="{ % static 'img/portfolio/books-1.jpg' % }" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="" title="More Details">Books 1</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-md-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <a href="{ % static 'img/portfolio/app-2.jpg' % }" data-gallery="portfolio-gallery-app" class="glightbox"><img
-                    src="{ % static 'img/portfolio/app-2.jpg' % }" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="" title="More Details">App 2</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-md-6 portfolio-item filter-product">
-              <div class="portfolio-wrap">
-                <a href="{ % static 'img/portfolio/product-2.jpg' % }" data-gallery="portfolio-gallery-app" class="glightbox"><img
-                    src="{ % static 'img/portfolio/product-2.jpg' % }" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="" title="More Details">Product 2</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-md-6 portfolio-item filter-branding">
-              <div class="portfolio-wrap">
-                <a href="{ % static 'img/portfolio/branding-2.jpg % }" data-gallery="portfolio-gallery-app"
-                  class="glightbox"><img src="{ % static 'img/portfolio/branding-2.jpg' %}" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="" title="More Details">Branding 2</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-md-6 portfolio-item filter-books">
-              <div class="portfolio-wrap">
-                <a href="{ % static 'img/portfolio/books-2.jpg' % }" data-gallery="portfolio-gallery-app" class="glightbox"><img
-                    src="{ % static 'img/portfolio/books-2.jpg' % }" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="" title="More Details">Books 2</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-md-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <a href="{ % static 'img/portfolio/app-3.jpg' % }" data-gallery="portfolio-gallery-app" class="glightbox"><img
-                    src="{ % static 'img/portfolio/app-3.jpg' % }" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="" title="More Details">App 3</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-md-6 portfolio-item filter-product">
-              <div class="portfolio-wrap">
-                <a href="{ % static 'img/portfolio/product-3.jpg' }" data-gallery="portfolio-gallery-app" class="glightbox"><img
-                    src="{ % static 'img/portfolio/product-3.jpg' % }" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="" title="More Details">Product 3</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-md-6 portfolio-item filter-branding">
-              <div class="portfolio-wrap">
-                <a href="{ % static 'img/portfolio/branding-3.jpg' % }" data-gallery="portfolio-gallery-app"
-                  class="glightbox"><img src="{ % static 'img/portfolio/branding-3.jpg' & }" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="" title="More Details">Branding 3</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-md-6 portfolio-item filter-books">
-              <div class="portfolio-wrap">
-                <a href="{ % static 'img/portfolio/books-3.jpg' % }" data-gallery="portfolio-gallery-app" class="glightbox"><img
-                    src="{ % static 'img/portfolio/books-3.jpg' % }" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="" title="More Details">Books 3</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  
-    <footer id="footer" class="footer">
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-5 col-md-12 footer-info">
-            <a href="index.html" class="logo d-flex align-items-center">
-              <span>ConsuBem</span>
-            </a>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta
-              donna mare fermentum iaculis eu non diam phasellus.</p>
-            
-    </footer>
-  
-
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
-
-  <div id="preloader"></div>
-
-  {%endblock%}
+    <!-- Conteúdo da Página -->
+    <div class="container mt-5">
+        <h1>Bem-vindo à Minha Loja</h1>
+        <p>Encontre os melhores produtos e ofertas.</p>
+    </div>
+    </body> 
+    {%endblock%}
