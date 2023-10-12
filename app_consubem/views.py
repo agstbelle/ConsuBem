@@ -1,6 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic import TemplateView
 
-def index (request):
-    return HttpResponse ('<h1>Olá mundo</h1>')
+# Create your views here.
+class Index(TemplateView):
+    template_name = "index.html"
 
