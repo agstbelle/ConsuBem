@@ -4,6 +4,7 @@ from .models import Usuario
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_protect
 
 def index(request):
     return render(request, 'index.html')
@@ -14,7 +15,7 @@ def cadastro(request):
         nome = request.POST.get('nome')
         telefone = request.POST.get('telefone')
         email = request.POST.get('email')
-        usuario = Usuario.objects.filter(user__email=email).first()
+        usuario = Usuario.objects.filter(user__username=email).first()
 
         if usuario is None:
   
@@ -24,13 +25,33 @@ def cadastro(request):
             usuario.save()
             messages.success(request, 'Cadastro realizado com sucesso.')
             return redirect('login')
+
+        
         else:
-            messages.error(request, 'Usuário já cadastrado.')
-            return render(request, 'cadastro.html')
+            messages.error(request, "Usuário já cadastrado")
+            return render(request, 'cadastro')
+            #messages.error(request, 'Usuário já cadastrado.')
+            #return render(request, 'cadastro.html')
+            #return redirect('cadastro')
     return render(request, 'cadastro.html')
 
-def login(request):
+def user_login(request):
+    if request.POST:
+        username = request.POST.get('email')
+        senha = request.POST['senha']
+        user = authenticate(request, username=username, password=senha)
+        print(user, username, senha)
+        if user is not None:
+            login(request, user)
+            #return redirect('index')  # Redirecionar para a página após o login
+            return redirect("index")
+        else:
+            messages.error(request, 'Credenciais inválidas')
+            return render(request, 'login.html')
+
     return render(request, 'login.html')
+
+
  
 
 

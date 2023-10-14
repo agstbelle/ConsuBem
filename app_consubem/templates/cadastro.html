@@ -14,18 +14,13 @@
                 <h5 class="card-title text-center mb-5 fw-light fs-5">cadastro</h5>
                 <form method="post" >
                   {% csrf_token %}
-                  <ul class="messages">
-                    {% for message in messages %}
-                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                    {% endfor %}
-                  </ul>
                 
                   <div class="form-floating mb-3">
                     <input name="nome" type="text" class="form-control" id="floatingInput" placeholder="nome">
                     <label for="floatingInput">Digite seu Nome</label>
                   </div>
                   <div class="form-floating mb-3">
-                    <input name="Telelefone" type="tel" class="form-control" id="floatingInput" placeholder="tel">
+                    <input name="telefone" type="tel" class="form-control" id="floatingInput" placeholder="tel">
                     <label for="floatingInput">Digite seu Telelefone</label>
                   </div>
                   <div class="form-floating mb-3">
@@ -45,6 +40,13 @@
                     </div>
                  
                 </form>
+                {% if messages %}
+                  <ul class="messages">
+                    {% for message in messages %}
+                      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}           
               </div>
             </div>
           </div>
