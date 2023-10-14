@@ -12,26 +12,33 @@
                 <img src="{% static 'img/logo.svg' %}" width="40">
                 </div>
                 <h5 class="card-title text-center mb-5 fw-light fs-5">cadastro</h5>
-                <form>
+                <form method="post" >
+                  {% csrf_token %}
+                  <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                  </ul>
+                
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                    <input name="nome" type="text" class="form-control" id="floatingInput" placeholder="nome">
                     <label for="floatingInput">Digite seu Nome</label>
                   </div>
                   <div class="form-floating mb-3">
-                    <input type="tel" class="form-control" id="floatingInput" placeholder="tel">
+                    <input name="Telelefone" type="tel" class="form-control" id="floatingInput" placeholder="tel">
                     <label for="floatingInput">Digite seu Telelefone</label>
                   </div>
                   <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Digite seu Email</label>
                   </div>
                   <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <input name="senha" type="password" class="form-control" id="floatingPassword" placeholder="Password">
                     <label for="floatingPassword">Digite sua Senha</label>
                   </div>
     
                   <div class="form-check mb-3">
-                    <a href="{% url 'login'%}">Já possui cadastro? Faça login!</a>
+                    <a id="link_login" class="link-success" href="{% url 'login'%}">Já possui cadastro? Faça login!</a>
                   </div>
                   <div class="d-grid mb-2">
                     <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Cadastrar-se</button>

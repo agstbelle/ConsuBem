@@ -1,3 +1,5 @@
+
+
 .bg-verde1{
   background-color: #38F278;
 }
@@ -10857,4 +10859,8 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   min-height: 15rem;
+}
+
+#link_login {
+  text-align: center;
 }
