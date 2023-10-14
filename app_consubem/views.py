@@ -16,23 +16,42 @@ def cadastro(request):
         telefone = request.POST.get('telefone')
         email = request.POST.get('email')
         usuario = Usuario.objects.filter(user__username=email).first()
-
-        if usuario is None:
-  
-            user = User.objects.create_user(username=email, email=email, password=senha)
-            user.save()
-            usuario = Usuario(nome=nome, telefone=telefone, user=user)
-            usuario.save()
-            messages.success(request, 'Cadastro realizado com sucesso.')
-            return redirect('login')
-
         
-        else:
-            messages.error(request, "Usuário já cadastrado")
-            return render(request, 'cadastro')
-            #messages.error(request, 'Usuário já cadastrado.')
+        if User.objects.filter(username=email).exists():
+            messages.error(request, 'Endereço de e-mail já cadastrado.')
+            return render(request, 'cadastro.html')
+
+        # Verificar se o e-mail já está em uso por um objeto Usuario
+        if Usuario.objects.filter(email=email).exists():
+            messages.error(request, 'Endereço de e-mail já cadastrado.')
+            return render(request, 'cadastro.html')
+
+        # Se o usuário e e-mail não existirem, criar um novo usuário
+        user = User.objects.create_user(username=email, email=email, password=senha)
+        user.save()
+        usuario = Usuario(nome=nome, telefone=telefone, user=user, email=email)
+        usuario.save()
+        messages.success(request, 'Cadastro realizado com sucesso.')
+        return redirect('login')
+        
+    return render(request, 'cadastro.html')
+
+        #if usuario is None:
+  
+            #user = User.objects.create_user(username=email, email=email, password=senha)
+            #user.save()
+            #usuario = Usuario(nome=nome, telefone=telefone, user=user)
+            #usuario.save()
+            #messages.success(request, 'Cadastro realizado com sucesso.')
+            #print(messages)
+            #return redirect('login')
+
+        #else:
+            #print("Usuário já cadastrado")
+            #messages.error(request, 'Endereço de e-mail já cadastrado.')
             #return render(request, 'cadastro.html')
-            #return redirect('cadastro')
+            
+        
     return render(request, 'cadastro.html')
 
 def user_login(request):
@@ -46,7 +65,7 @@ def user_login(request):
             #return redirect('index')  # Redirecionar para a página após o login
             return redirect("index")
         else:
-            messages.error(request, 'Credenciais inválidas')
+            messages.error(request, 'usuário ou senha incorretos')
             return render(request, 'login.html')
 
     return render(request, 'login.html')
