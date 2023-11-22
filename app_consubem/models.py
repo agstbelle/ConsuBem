@@ -26,9 +26,15 @@ class Usuario(models.Model):
     email = models.EmailField(unique=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-class produto(models.Model):
+class Produto(models.Model):
     nome_produto = models.TextField(max_length=80)
     categoria = models.PositiveBigIntegerField(default = 9, choices= CATEGORIAS_PRODUTO )
     estado = models.PositiveBigIntegerField(default= 3, choices  =ESTADO_PRODUTO)
     descricao_produto = models.TextField(max_length=500)
+
+class solicitar_troca(models.Model):
+    usuario = models.TextField(max_length=255)
+    data_solicitacao = models.DateField()
+    hora_solicitacao = models.TimeField()
+    
 
