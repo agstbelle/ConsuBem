@@ -9,11 +9,12 @@
 .bg-roxo{
   background-color: #b889ff;
 }
-
 .bg-azul{
   background-color: #DBE9EC;
 }
-
+.bg-marrom{
+  background-color: #735948;
+}
 .v-full{
   height: calc(100% - 200px);
   min-height: calc(100vh - 200px);
