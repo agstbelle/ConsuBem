@@ -8,109 +8,139 @@
     <title>Dashboard</title>
 </head>
 
-<body>
-    <div class="row text-center">
-        <div class="col-3 mb-2 bg-verde1 border mb-3">
-            <img src="/static/img/logo2.svg" alt="">
-        </div>
-        <class class="col border mb-3">
-            <h1>Dashboard</h1>
-        </class>
-    </div>
-    <div class="row text-center">
-        <div class="col-2 border mb-3">
-            <img class="mb-1" src="/static/img/pessoa.svg" width="90">
-            <a href="#" class="btn btn-primary mb-1">Cadastrar Produto</a>
-            <a href="#" class="btn btn-primary mb-1">Cadastrar Administrador</a>
-        </div>
-        <div class="col border mb-3">
-            <h5>Trocas para avalidar</h5>
-            <table class="table table-striped bg-azul">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col border mb-3">
-            <h5>Doações para avaliar</h5>
-            <table class="table table-striped bg-azul">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="row bg-azul">
-        <div class="col border mb-3">
-            <h5>Histórico de avaliações - trocas</h5>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A fourth item</li>
-                <li class="list-group-item">And a fifth one</li>
-            </ul>
-        </div>
-        <div class="col border mb-3">
-            <h5>Histórico de avaliações - doações</h5>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A fourth item</li>
-                <li class="list-group-item">And a fifth one</li>
-            </ul>
-        </div>
-    </div>
+<body class="bg-cinza">
+    <main class="container-fluid mt-3">
+        <div class="row">
+            <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="#bootstrap" />
+                    </svg>
+                    <a class="navbar-brand" href="#">
+                        <img src="/static/img/logo2.svg" alt="Logo">
+                    </a>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a href="cadastrar_produto.html" class="nav-link link-dark" aria-current="page">
+                            <svg class="bi me-2" width="16" height="16">
+                                <use xlink:href="#home" />
+                            </svg>
+                            Cadastrar produto
+                        </a>
+                    </li>
+                    <li>
+                        <a href="cadastrar_admin.html" class="nav-link link-dark">
+                            <svg class="bi me-2" width="16" height="16">
+                                <use xlink:href="#speedometer2" />
+                            </svg>
+                            Cadastrar administrador
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+                        id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <strong>mdo</strong>
+                    </a>
+                    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col m-2 bg-light">
+                <h4>Trocas para avaliar</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Objeto</th>
+                            <th scope="col">Estado de conservação</th>
 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>coisa1</td>
+                            <td>bom</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>coisa2</td>
+                            <td>otimo</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>coisa3</td>
+                            <td>ruim</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col m-2 bg-light">
+                <h4>Doações para avaliar</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Objeto</th>
+                            <th scope="col">Estado de conservação</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>coisa1</td>
+                            <td>bom</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>coisa2</td>
+                            <td>otimo</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>coisa3</td>
+                            <td>ruim</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+
+            </div>
+            <div class="col">
+
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center mt-3">
+        <!-- Footer content -->
+    </footer>
 </body>
 
 </html>
