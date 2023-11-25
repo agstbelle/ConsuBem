@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{%extends 'base.html'%}
+{%load static%}
+{%block conteudo%}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <title>Dashboard</title>
-</head>
 
 <body class="bg-cinza">
     <main class="container-fluid mt-3">
@@ -17,7 +12,7 @@
                         <use xlink:href="#bootstrap" />
                     </svg>
                     <a class="navbar-brand" href="#">
-                        <img src="/static/img/logo2.svg" alt="Logo">
+                        <img src="{% static 'img/logo2.svg' %}" alt="Logo">
                     </a>
                 </a>
                 <hr>
@@ -40,7 +35,7 @@
                     </li>
                 </ul>
                 <hr>
-                
+
             </div>
             <div class="col m-2 bg-light">
                 <h4>Trocas para avaliar</h4>
@@ -128,4 +123,4 @@
     </footer>
 </body>
 
-</html>
+{%endblock%}
