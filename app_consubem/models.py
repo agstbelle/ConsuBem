@@ -31,10 +31,9 @@ class Produto(models.Model):
     categoria = models.PositiveBigIntegerField(default = 9, choices= CATEGORIAS_PRODUTO )
     estado = models.PositiveBigIntegerField(default= 3, choices  =ESTADO_PRODUTO)
     descricao_produto = models.TextField(max_length=500)
+    foto_produto =  models.ImageField(upload_to="fotos_produto")
 
-class solicitar_troca(models.Model):
-    usuario = models.TextField(max_length=255)
-    data_solicitacao = models.DateField()
-    hora_solicitacao = models.TimeField()
+
+
     
 
