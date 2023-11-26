@@ -70,6 +70,20 @@ def user_login(request):
 
     return render(request, 'login.html')
 
+def dashboard_admin(request):
+    return render(request, 'dashboard_admin.html')
+
+def cadastro_admin(request):
+    return render(request, 'cadastrar_admin.html')
+
+def cadastro_produto(request):
+    return render(request, 'cadastrar_produto.html')
+
+
+
+
+
+
 
  
 
