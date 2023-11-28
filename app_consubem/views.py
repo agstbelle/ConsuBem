@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from .models import Usuario
+from .models import Usuario, Produto
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -77,7 +77,22 @@ def cadastro_admin(request):
     return render(request, 'cadastrar_admin.html')
 
 def cadastro_produto(request):
+    if request.POST:
+        np = request.POST.get('nome_produto')
+        dp = request.POST.get('descricaoProduto')
+        cp = request.POST.get('categoria')
+        ecp = request.POST.get('estado')
+        fto = request.FILES['foto_produto']
+        novo = Produto(nome_produto= np, descricao_produto = dp, categoria = cp, estado = ecp, foto_produto = fto)
+        novo.save()
+        messages.success(request, 'Produto cadastrado com sucesso.')
+    else:
+        print("deu errado")
+    
     return render(request, 'cadastrar_produto.html')
+
+
+
 
 
 

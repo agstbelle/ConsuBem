@@ -40,33 +40,34 @@
             </div>
             <div class="col-6 m-2 bg-light ">
                 <h2>Cadastro de Produto</h2>
-                <form>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}  
                     <div class="form-group">
                         <label for="nomeProduto">Nome do Produto</label>
-                        <input type="text" class="form-control" name="nome" id="nomeProduto" placeholder="Digite o nome do produto"
+                        <input type="text" class="form-control" name="nome_produto" id="nomeProduto" placeholder="Digite o nome do produto"
                             required>
                     </div>
                     <div class="form-group">
                         <label for="descricaoProduto">Descrição do Produto</label>
-                        <textarea class="form-control" id="descricaoProduto" rows="3"
+                        <textarea name="descricaoProduto" required class="form-control" id="descricaoProduto" rows="3"
                             placeholder="Digite a descrição do produto" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="categoriaProduto">Categoria do Produto</label>
-                        <select class="form-control" id="categoriaProduto" required>
+                        <select class="form-control" name="categoria" id="categoriaProduto" required>
                             <option value="">Selecione a categoria</option>
-                            <option value="eletronicos">Eletrônicos</option>
-                            <option value="vestuario">Vestuário</option>
-                            <option value="livros">Livros</option>
+                            <option value="1">Livros</option>
+                            <option value="2">Roupas</option>
+                            <option value="3">Eletrônicos</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="estadoConservacao">Estado de Conservação</label>
-                        <select class="form-control" id="estadoConservacao" required>
+                        <select name="estado" class="form-control" id="estadoConservacao" required>
                             <option value="">Selecione o estado de conservação</option>
-                            <option value="novo">Novo</option>
-                            <option value="usado">Usado</option>
-                            <option value="desgastado">Desgastado</option>
+                            <option value="1">Novo</option>
+                            <option value="2">Seminovo</option>
+                            <option value="3">Desgastado</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -76,6 +77,13 @@
                     </div>
                     <button type="submit" class="btn btn-primary m-2">Cadastrar Produto</button>
                 </form>
+                {% if messages %}
+                <ul class="messages">
+                  {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}                
             </div>
         </div>
     </div>
