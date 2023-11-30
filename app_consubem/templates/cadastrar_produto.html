@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{%extends 'base.html'%}
+{%load static%}
+{%block conteudo%}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <title>Cadastro de produto</title>
-</head>
-
-<body class="bg-verde1">
     <div class="container-fluid">
         <div class="row">
             <div class="col-3 m-2">
@@ -26,7 +19,7 @@
                     
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
-                            <a href="dashboard_adimin.html" class="nav-link link-dark" aria-current="page">
+                            <a href="{% url 'dashboard' %}" class="nav-link link-dark" aria-current="page">
                                 <svg class="bi me-2" width="16" height="16">
                                     <use xlink:href="#home" />
                                 </svg>
@@ -34,7 +27,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="cadastrar_admin.html" class="nav-link link-dark">
+                            <a href="{% url 'cadastro_admin' %}" class="nav-link link-dark">
                                 <svg class="bi me-2" width="16" height="16">
                                     <use xlink:href="#speedometer2" />
                                 </svg>
@@ -47,52 +40,54 @@
             </div>
             <div class="col-6 m-2 bg-light ">
                 <h2>Cadastro de Produto</h2>
-                <form>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}  
                     <div class="form-group">
                         <label for="nomeProduto">Nome do Produto</label>
-                        <input type="text" class="form-control" id="nomeProduto" placeholder="Digite o nome do produto"
+                        <input type="text" class="form-control" name="nome_produto" id="nomeProduto" placeholder="Digite o nome do produto"
                             required>
                     </div>
                     <div class="form-group">
                         <label for="descricaoProduto">Descrição do Produto</label>
-                        <textarea class="form-control" id="descricaoProduto" rows="3"
+                        <textarea name="descricaoProduto" required class="form-control" id="descricaoProduto" rows="3"
                             placeholder="Digite a descrição do produto" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="categoriaProduto">Categoria do Produto</label>
-                        <select class="form-control" id="categoriaProduto" required>
+                        <select class="form-control" name="categoria" id="categoriaProduto" required>
                             <option value="">Selecione a categoria</option>
-                            <option value="eletronicos">Eletrônicos</option>
-                            <option value="vestuario">Vestuário</option>
-                            <option value="livros">Livros</option>
+                            <option value="1">Livros</option>
+                            <option value="2">Roupas</option>
+                            <option value="3">Eletrônicos</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="estadoConservacao">Estado de Conservação</label>
-                        <select class="form-control" id="estadoConservacao" required>
+                        <select name="estado" class="form-control" id="estadoConservacao" required>
                             <option value="">Selecione o estado de conservação</option>
-                            <option value="novo">Novo</option>
-                            <option value="usado">Usado</option>
-                            <option value="desgastado">Desgastado</option>
+                            <option value="1">Novo</option>
+                            <option value="2">Seminovo</option>
+                            <option value="3">Desgastado</option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nomeProduto">Nome do Produto</label>
+                        <input type="file" class="form-control" name="foto_produto" id="nomeProduto" placeholder="Insira a foto do produto"
+                            required>
                     </div>
                     <button type="submit" class="btn btn-primary m-2">Cadastrar Produto</button>
                 </form>
+                {% if messages %}
+                <ul class="messages">
+                  {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}                
             </div>
         </div>
     </div>
 
 
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+{%endblock%}
