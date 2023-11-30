@@ -33,6 +33,12 @@ class Produto(models.Model):
     descricao_produto = models.TextField(max_length=500)
     foto_produto =  models.ImageField(upload_to="fotos_produto")
 
+class Administrador(models.Model):
+    nome_adm = models.TextField(max_length=255)
+    email = models.EmailField
+    matricula = models.CharField(max_length = 14, unique=True)
+
+
 
 
     

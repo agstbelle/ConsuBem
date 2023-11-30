@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from .models import Usuario, Produto
+from .models import Usuario, Produto, Administrador
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -90,6 +90,34 @@ def cadastro_produto(request):
         print("deu errado")
     
     return render(request, 'cadastrar_produto.html')
+
+# views.py
+def cadastro_admin(request):
+    if request.POST:
+        senha = request.POST.get('senha_adm')
+        nome = request.POST.get('nome_Adm')
+        matricula = request.POST.get('matricula')
+        email = request.POST.get('email_adm')
+        
+        if User.objects.filter(username=email).exists():
+            messages.error(request, 'Endereço de e-mail já cadastrado.')
+            return render(request, 'cadastrar_admin.html')
+
+        # Verificar se o e-mail já está em uso por um objeto UsuarioAdministrador
+        if Administrador.objects.filter(email=email).exists():
+            messages.error(request, 'Endereço de e-mail já cadastrado.')
+            return render(request, 'cadastrar_admin.html')
+
+        # Se o usuário e e-mail não existirem, criar um novo usuário administrador
+        user = User.objects.create_user(username=email, email=email, password=senha)
+        user.save()
+        admin_user = Administrador(nome_adm=nome, matricula=matricula, user=user, email=email)
+        admin_user.save()
+        messages.success(request, 'Cadastro de administrador realizado com sucesso.')
+        return redirect('login')
+        
+    return render(request, 'cadastrar_admin.html')
+
 
 
 
