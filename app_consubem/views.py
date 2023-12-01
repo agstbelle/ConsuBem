@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from .models import Usuario, Produto
+from .models import Perfil, Produto
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -15,22 +15,23 @@ def cadastro(request):
         nome = request.POST.get('nome')
         telefone = request.POST.get('telefone')
         email = request.POST.get('email')
-        usuario = Usuario.objects.filter(user__username=email).first()
+        perfil = Perfil.objects.filter(user__username=email).first()
         
         if User.objects.filter(username=email).exists():
             messages.error(request, 'Endereço de e-mail já cadastrado.')
             return render(request, 'cadastro.html')
 
         # Verificar se o e-mail já está em uso por um objeto Usuario
-        if Usuario.objects.filter(email=email).exists():
+        if User.objects.filter(email=email).exists():
             messages.error(request, 'Endereço de e-mail já cadastrado.')
             return render(request, 'cadastro.html')
 
         # Se o usuário e e-mail não existirem, criar um novo usuário
-        user = User.objects.create_user(username=email, email=email, password=senha)
+        user = User(username=email, email=email, password=senha, is_staff= False)
+        user.set_password(senha)
         user.save()
-        usuario = Usuario(nome=nome, telefone=telefone, user=user, email=email)
-        usuario.save()
+        perfil= Perfil(nome=nome, telefone=telefone, user=user)
+        perfil.save()
         messages.success(request, 'Cadastro realizado com sucesso.')
         return redirect('login')
         
@@ -56,14 +57,17 @@ def cadastro(request):
 
 def user_login(request):
     if request.POST:
-        username = request.POST.get('email')
-        senha = request.POST['senha']
+        username = request.POST.get('username')
+        senha = request.POST.get('senha')
         user = authenticate(request, username=username, password=senha)
-        print(user, username, senha)
+        print(username, senha)
         if user is not None:
             login(request, user)
-            #return redirect('index')  # Redirecionar para a página após o login
-            return redirect("index")
+            p_logado = Perfil.objects.filter(user__id = user.id ) 
+            if user.is_staff:
+                return redirect("dashboard")
+            else:
+                return redirect("index")
         else:
             messages.error(request, 'usuário ou senha incorretos')
             return render(request, 'login.html')
@@ -90,6 +94,36 @@ def cadastro_produto(request):
         print("deu errado")
     
     return render(request, 'cadastrar_produto.html')
+
+# views.py
+def cadastro_admin(request):
+    if request.POST:
+        senha = request.POST.get('senha_adm')
+        nome = request.POST.get('nome_adm')
+        matricula = request.POST.get('matricula')
+        email = request.POST.get('email_adm')
+        print (matricula,email,senha)
+        
+        if User.objects.filter(username=matricula).exists():
+            messages.error(request, 'Matrícula já cadastrada.')
+            return render(request, 'cadastrar_admin.html')
+        
+        # Verificar se o e-mail já está em uso por um objeto UsuarioAdministrador
+        if User.objects.filter(email=email).exists():
+            messages.error(request, 'Endereço de e-mail já cadastrado.')
+            return render(request, 'cadastrar_admin.html')
+
+        # Se o usuário e e-mail não existirem, criar um novo usuário administrador
+        user = User(username=matricula, email=email, password=senha, is_staff = True )
+        user.set_password(senha)
+        user.save()
+        admin_user = Perfil(nome=nome, matricula=matricula, user=user)
+        admin_user.save()
+        messages.success(request, 'Cadastro de administrador realizado com sucesso.')
+        return redirect('login')
+        
+    return render(request, 'cadastrar_admin.html')
+
 
 
 

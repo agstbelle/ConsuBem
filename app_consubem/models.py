@@ -20,11 +20,11 @@ ESTADO_PRODUTO = [
     (3, "Desgastado")
 ]
 
-class Usuario(models.Model):
+class Perfil(models.Model):
     nome = models.TextField(max_length=255)
     telefone = models.CharField(max_length = 11)
-    email = models.EmailField(unique=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    matricula = models.CharField(max_length = 14, unique=False, null= False)
 
 class Produto(models.Model):
     nome_produto = models.TextField(max_length=80)
@@ -32,6 +32,8 @@ class Produto(models.Model):
     estado = models.PositiveBigIntegerField(default= 3, choices= ESTADO_PRODUTO)
     descricao_produto = models.TextField(max_length=500)
     foto_produto =  models.ImageField(upload_to="fotos_produto")
+
+
 
 
 
