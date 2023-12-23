@@ -9,6 +9,9 @@ from django.views.decorators.csrf import csrf_protect
 def index(request):
     return render(request, 'index.html')
 
+def troca_item(request):
+    return render(request, 'troca_item.html')
+
 def cadastro(request):
     if request.POST:
         senha = request.POST.get('senha')
@@ -123,6 +126,8 @@ def cadastro_admin(request):
         return redirect('login')
         
     return render(request, 'cadastrar_admin.html')
+
+
 
 
 
