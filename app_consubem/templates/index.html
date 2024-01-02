@@ -32,6 +32,7 @@
     <div class="container-fluid mt-4">
         <h2>Categorias:</h2>
         <div class="row row-cols-md-4 row-cols-sm-2 row-cols-1 v-full">
+          <a href="{% url 'catalogo' 1 %}">
             <div class="col mb-4">
                 
                 <div class="card" style="width: 18rem;">
@@ -42,15 +43,17 @@
                     </div>
                   </div>
             </div>
+          </a>
             <div class="col mb-4">
-                
                 <div class="card" style="width: 18rem;">
+                
                     <img class="card-img-top" src="{% static 'img/roupas.png' %}" width="50" alt="Card image cap">
                     <div class="card-body">
                       <h5 class="card-title">Roupas</h5>
                       <p class="card-text"></p>
                     </div>
-                  </div>
+                  
+                </div>
             </div>
             <div class="col mb-4">
                 

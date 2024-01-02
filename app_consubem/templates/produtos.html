@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block conteudo%}
+
+<section class="bg-light py-5">
+    <div class="container px-5 my-5">
+      <div class="row header">
+        <div class="text-center mb-5">
+          <h1 class="fw-bolder">Aqui estão os produtos que estão no catálago do ConsuBem/h1>
+          <p class="lead fw-normal text-muted mb-0">todos os itens que você cadastrou no sistema</p>
+      </div>
+      </div>
+  
+    
+      <div class="row v-full text-center">
+        <div class="col">
+          <div class="container-sm mx-auto">
+            <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1">
+              {%for i in lista%}
+              <div class="col">
+                <div class="card mb-3" style="max-width: 540px;">
+                  <div class="row g-0 bg-verde">
+                    <div class="col-md-4  img-categoria my-auto mx-auto text-center">
+
+                    </div>
+                    <div class="col-md-8 bg-azul">
+                      <div class="card-body text-start">
+                        <p class="card-text"><strong>Nome:</strong> {{i.nome_produto}} </p>
+                        <p class="card-text"><strong>Estado:</strong>{{i.descricao_produto}} </p>
+                        <p class="card-text">
+                          <!-- <a href="/alunos/removerperdido/{{i.id}}">Remover</a>
+                          <a href="/alunos/editarperdido/{{i.id}}">Editar</a> -->
+                        </p>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {%endfor%}
+              
+            </div>
+            
+          </div>
+        </div>  
+      </div>
+    </div>
+    </section>
+
+{%endblock%}
