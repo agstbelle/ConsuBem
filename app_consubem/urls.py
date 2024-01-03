@@ -8,6 +8,8 @@ urlpatterns = [
     path ('dashboard', views.dashboard_admin, name="dashboard"),
     path ('cadastro_produto', views.cadastro_produto, name="cadastro_produto"),
     path ('cadastro_admin', views.cadastro_admin, name="cadastro_admin"),
-    path ('troca_item', views.troca_item, name="troca_item"),
-    path ('ecobag', views.ecobag, name="ecobag")
+    path ('produtos/<int:categoria>', views.produtos, name='catalogo'),
+    path ('ecobag/<int:id>/add', views.add_ecobag, name='add_ecobag'),
+  
+    
 ]

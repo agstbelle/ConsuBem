@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
-from .models import Perfil, Produto
+from .models import Perfil, Produto, Ecobag
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -93,7 +93,10 @@ def cadastro_produto(request):
         cp = request.POST.get('categoria')
         ecp = request.POST.get('estado')
         fto = request.FILES['foto_produto']
+        
         novo = Produto(nome_produto= np, descricao_produto = dp, categoria = cp, estado = ecp, foto_produto = fto)
+        novo.ativo = True
+        novo.user= request.user
         novo.save()
         messages.success(request, 'Produto cadastrado com sucesso.')
     else:
@@ -130,6 +133,57 @@ def cadastro_admin(request):
         
     return render(request, 'cadastrar_admin.html')
 
+def produtos(request, categoria):
+    if categoria != 0:
+        produtos =  Produto.objects.filter(ativo = True, categoria = categoria)
+    else:
+        produtos =  Produto.objects.filter(ativo = True)
+
+    ecobag = []
+
+    ctx = {
+        'lista' : produtos,
+        
+    }
+
+    
+    return render (request, "catalogo.html", ctx)
+
+
+def ecobag(request):
+    ecobag = []
+    if request.user.is_authenticated:
+        ecobag = Ecobag(usuario=request.user)
+
+    ctx = {
+        'lista' : ecobag,
+    }
+
+    return render (request, "ecobag.html", ctx)
+
+def add_ecobag(request, id):
+    produto = get_object_or_404(Produto, pk=id)
+
+    if request.user.is_authenticated:
+        # Verifique se o produto já está na Ecobag
+        if Ecobag.objects.filter(usuario=request.user, produto=produto).exists():
+            messages.warning(request, 'Este produto já está na sua Ecobag.')
+        else:
+            # Adicione o produto à Ecobag
+            ecobag_item = Ecobag(usuario=request.user, produto=produto)
+            ecobag_item.save()
+            messages.success(request, 'Produto adicionado à Ecobag com sucesso.')
+
+        # Redirecione para a página de produtos ou para onde desejar
+        return redirect(f'/produtos/{produto.categoria}')
+
+    else:
+        return redirect('login')
+
+
+   
+    
+    
 
 
 

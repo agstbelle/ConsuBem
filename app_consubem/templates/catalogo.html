@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block conteudo %}
+<div class="container-fluid">
+  <div class="row header">
+    <div class="col text-start">
+      <a href="{% url 'ecobag' %}"> Ver Ecobag 
+        <span> {{ request.user.ecobag_set.count }}</span> </a>
+    </div>
+  </div>
+
+  <div class="row v-full text-center">
+    <div class="col">
+      <div class="container">
+        {% if lista|length > 0 %}
+        <div class="card-deck">
+          {% for i in lista %}
+          <div class="card">
+            <img src="/media/{{ i.foto_produto }}" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ i.nome_produto }}</h5>
+              <p class="card-text"><strong>Categoria:</strong> {{ i.get_categoria_display }}</p>
+              <p class="card-text"><strong>Descrição:</strong> {{ i.descricao_produto }}</p>
+              <p class="card-text"><strong>Estado de uso:</strong> {{ i.get_estado_display }}</p>
+              <form action="{% url 'add_ecobag' i.pk %}" method="post">
+                {% csrf_token %}
+                    <button type="submit" class="btn btn-success" >Adicionar à Ecobag</button>
+               </form>
+            </div>
+          </div>
+
+          {% endfor %}
+        </div>
+        {% else %}
+          <p class="text-muted mt-5">Nenhum produto encontrado nesta categoria.</p>
+          <a class="btn btn-light" href="/">Voltar</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
