@@ -77,9 +77,6 @@ def user_login(request):
 
     return render(request, 'login.html')
 
-def ecobag(request):
-    return render(request, 'ecobag.html')
-
 def dashboard_admin(request):
     return render(request, 'dashboard_admin.html')
 

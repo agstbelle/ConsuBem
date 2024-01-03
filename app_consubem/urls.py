@@ -9,5 +9,4 @@ urlpatterns = [
     path ('cadastro_produto', views.cadastro_produto, name="cadastro_produto"),
     path ('cadastro_admin', views.cadastro_admin, name="cadastro_admin"),
     path ('troca_item', views.troca_item, name="troca_item"),
-    path ('ecobag', views.ecobag, name="ecobag")
 ]
