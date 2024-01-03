@@ -134,13 +134,10 @@ def produtos(request, categoria):
         produtos =  Produto.objects.filter(ativo = True)
 
     ecobag = []
-    if request.user is not None:
-        ecobag = Ecobag(usuario=request.user)
-        print('ecobags', ecobag)
 
     ctx = {
         'lista' : produtos,
-        'ecobag' :ecobag
+        
     }
 
     
