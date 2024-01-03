@@ -9,12 +9,37 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-verde1">
+        <div class="container">
+    
+          <!-- Logo -->
+          <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="{% static 'img/logo.svg' %}" alt="Logo da Loja" width="70" height="70">
+          </a>
+    
+          <!-- Barra de Pesquisa -->
+          <form class="form-inline my-2 my-lg-0 ml-3">
+            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+          </form>
+    
+          <!-- Carrinho -->
+          <a href="{% url 'cadastro' %}" class="ml-3">
+            <img src="{% static 'img/login_cad.svg' %}" width="100" height="100" alt="login e cadastro">
+          </a>
+    
+          <a href="{% url 'ecobag' %}" class="ml-3">
+            <img src="{% static 'img/bag.svg' %}" width="30" height="30" alt="login e cadastro">
+          </a>
+    
+      </nav>
 
 
     {%block conteudo %}
 
     {%endblock%}
+</body>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
 
