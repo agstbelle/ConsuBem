@@ -1,0 +1,79 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block conteudo%}
+
+<body> <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-verde1">
+    <div class="container">
+
+      <!-- Logo -->
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'img/logo.svg' %}" alt="Logo da Loja" width="70" height="70">
+      </a>
+
+      <!-- Barra de Pesquisa -->
+      <form class="form-inline my-2 my-lg-0 ml-3">
+        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+      </form>
+
+      <!-- Carrinho -->
+      <a href="{% url 'cadastro' %}" class="ml-3">
+        <img src="{% static 'img/login_cad.svg' %}" width="100" height="100" alt="login e cadastro">
+      </a>
+
+      <a href="#" class="ml-3">
+        <img src="{% static 'img/bag.svg' %}" width="30" height="30" alt="login e cadastro">
+      </a>
+
+  </nav>
+  </div>
+  <!-- Conteúdo da Página -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-4 border border-start">
+        <label class="text-center"><img src="{% static 'img/bag.svg' %}"></label>
+      </div>
+      <div class="col-4 border border-start">
+        <label>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</label>
+      </div>
+      <div class="col-4 border border-start">
+        <label>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 border border-start">
+        <label class="text-center"><img src="{% static 'img/bag.svg' %}"></label>
+      </div>
+      <div class="col-4 border border-start">
+        <label>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</label>
+      </div>
+      <div class="col-4 border border-start">
+        <label>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 border border-start">
+        <label class="text-center"><img src="{% static 'img/bag.svg' %}"></label>
+      </div>
+      <div class="col-4 border border-start">
+        <label>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</label>
+      </div>
+      <div class="col-4 border border-start">
+        <label>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 border">
+        <label class="text-center"><img src="{% static 'img/bag.svg' %}"></label>
+      </div>
+      <div class="col-4 border border-start">
+        <label>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</label>
+      </div>
+      <div class="col-4 border">
+        <label>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</label>
+      </div>
+    </div>
+  </div>
+</body>
+{%endblock%}

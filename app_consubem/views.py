@@ -9,6 +9,9 @@ from django.views.decorators.csrf import csrf_protect
 def index(request):
     return render(request, 'index.html')
 
+def troca_item(request):
+    return render(request, 'troca_item.html')
+
 def cadastro(request):
     if request.POST:
         senha = request.POST.get('senha')
@@ -73,6 +76,9 @@ def user_login(request):
             return render(request, 'login.html')
 
     return render(request, 'login.html')
+
+def ecobag(request):
+    return render(request, 'ecobag.html')
 
 def dashboard_admin(request):
     return render(request, 'dashboard_admin.html')
@@ -178,6 +184,8 @@ def add_ecobag(request, id):
    
     
     
+
+
 
 
 
