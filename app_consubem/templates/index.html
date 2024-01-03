@@ -1,102 +1,107 @@
-
 {%extends 'base.html'%}
 {%load static%}
 {%block conteudo%}
 
-  
-    </div>
-    <!-- Conteúdo da Página -->
-    <div class="container-fluid mt-4">
-        <h2>Categorias:</h2>
-        <div class="row row-cols-md-4 row-cols-sm-2 row-cols-1 v-full">
-          <a href="{% url 'catalogo' 1 %}">
-            <div class="col mb-4">
-                
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{% static 'img/livros.jpeg' %}" width="50" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Livros</h5>
-                      <p class="card-text"></p>
-                    </div>
-                  </div>
-            </div>
-          </a>
-          <a href="{% url 'catalogo' 2 %}">
-            <div class="col mb-4">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{% static 'img/roupas.jpeg' %}" width="50" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Roupas</h5>
-                      <p class="card-text"></p>
-                    </div>
-                  
-                </div>
-            </div>
-          </a>
-          <a  href="{% url 'catalogo' 3 %}">
-            <div class="col mb-4">
-                
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{% static 'img/eletronicos.jpeg' %}" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Eletrônicos</h5>
-                      <p class="card-text"></p>
-                    </div>
-                  </div>
-            </div>
-          </a>
-            <div class="col mb-4">
-                
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{% static 'img/bolsas.jpeg' %}" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Bolsas</h5>
-                      <p class="card-text"></p>
-                    </div>
-                  </div>
-            </div>
-            <div class="col mb-4">
-                
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{% static 'img/acessorios.jpeg' %}" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Acessórios</h5>
-                      <p class="card-text"></p>
-                    </div>
-                  </div>
-            </div>
-            <div class="col mb-4">
-                
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{% static 'img/papelaria.jpeg' %}" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Papelaria</h5>
-                      <p class="card-text"></p>
-                    </div>
-                  </div>
-            </div>
-            <div class="col mb-4">
-                
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{% static 'img/calçados.jpeg' %}" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Calçados</h5>
-                      <p class="card-text"></p>
-                    </div>
-                  </div>
-            </div>
-            <div class="col mb-4">
-                
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{% static 'img/brinquedos.jpeg' %}" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Brinquedos</h5>
-                      <p class="card-text"></p>
-                    </div>
-                  </div>
-            </div>
-        </div>
 
-    </div>
-  
-    {%endblock%}
+</div>
+<!-- Conteúdo da Página -->
+<div class="container-fluid mt-4">
+  <h2 class="m-3">Categorias:</h2>
+  <div class="row row-cols-md-4 row-cols-sm-2 row-cols-1 v-full">
+    <a href="{% url 'catalogo' 1 %}">
+      <div class="col mb-4">
+
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{% static 'img/livros.jpeg' %}" width="50" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Livros</h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a href="{% url 'catalogo' 2 %}">
+      <div class="col mb-4">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{% static 'img/roupas.jpeg' %}" width="50" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Roupas</h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a href="{% url 'catalogo' 3 %}">
+      <div class="col mb-4">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{% static 'img/eletronicos.jpeg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Eletrônicos</h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a href="{% url 'catalogo' 4 %}">
+      <div class="col mb-4">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{% static 'img/bolsas.jpeg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Bolsas</h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="{% url 'catalogo' 5 %}">
+      <div class="col mb-4">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{% static 'img/acessorios.jpeg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Acessórios</h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a href="{% url 'catalogo' 6 %}">
+      <div class="col mb-4">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{% static 'img/papelaria.jpeg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Papelaria</h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a href="{% url 'catalogo' 7 %}">
+      <div class="col mb-4">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{% static 'img/calçados.jpeg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Calçados</h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="{% url 'catalogo' 8 %}">
+      <div class="col mb-4">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{% static 'img/brinquedos.jpeg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Brinquedos</h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+</div>
+
+{%endblock%}
