@@ -6,9 +6,12 @@
 <div class="container-fluid">
   <div class="row header">
     <div class="col text-start">
-      <a href="{% url 'ecobag' %}"> Ver Ecobag 
-        <span> {{ request.user.ecobag_set.count }}</span> </a>
+      <a href="{% url 'ecobag' %}" class="btn btn-primary">
+        Ver Ecobag 
+        <span class="badge bg-secondary">{{ request.user.ecobag_set.count }}</span>
+      </a>
     </div>
+    
   </div>
 
   <div class="row v-full text-center">
