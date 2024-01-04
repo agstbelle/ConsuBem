@@ -34,13 +34,15 @@ class Produto(models.Model):
     ativo = models.BooleanField(default=True)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
 
+
 class Ecobag(models.Model):
      usuario = models.ForeignKey(User, on_delete=models.CASCADE)
      produto = models.ForeignKey(Produto, on_delete=models.CASCADE)  
 
      def __str__(self):
-        return f"{self.usuario.username}"
-
+        return f"{self.usuario.username} -  {self.produto.nome_produto}"
+     
+     
 
 
 

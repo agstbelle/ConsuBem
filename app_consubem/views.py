@@ -149,17 +149,27 @@ def produtos(request, categoria):
     
     return render (request, "catalogo.html", ctx)
 
-
+@login_required
 def ecobag(request):
-    ecobag = []
+
+    ecobag_items = Ecobag.objects.filter(usuario=request.user)
+    
+    ctx = {
+        'lista': ecobag_items,
+    }
+        
+    return render(request, "ecobag.html", ctx)
+
+    """ecobag = []
     if request.user.is_authenticated:
         ecobag = Ecobag(usuario=request.user)
 
-    ctx = {
-        'lista' : ecobag,
-    }
-
-    return render (request, "ecobag.html", ctx)
+        ctx = {
+            'lista' : ecobag,
+            }
+            
+        return render (request, "ecobag.html", ctx)"""
+   
 
 def add_ecobag(request, id):
     produto = get_object_or_404(Produto, pk=id)

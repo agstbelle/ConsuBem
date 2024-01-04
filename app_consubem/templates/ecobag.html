@@ -3,53 +3,26 @@
 {%block conteudo%}
 
   
-  </div>
-  <!-- Conteúdo da Página -->
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-4 border border-start">
-        <label class="text-center"><img src="{% static 'img/bag.svg' %}"></label>
+<div class="container mt-5">
+    <!-- Conteúdo da Página -->
+    {% for item in lista %}
+      <div class="row mb-4">
+        <div class="col-4 border border-start">
+          <img src="/media/{{ item.produto.foto_produto }}" class="img-thumbnail" alt="{{ item.produto.nome_produto }}">
+        </div>
+        <div class="col-4 border border-start">
+          <h6>{{ item.produto.nome_produto }}</h6>
+          <p><strong>Categoria:</strong> {{ item.produto.get_categoria_display }}</p>
+        </div>
+        <div class="col-4 border border-start">
+          <p><strong>Categoria:</strong> {{ item.produto.get_categoria_display }}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <button type="button" class="btn btn-danger btn-sm" >Excluir</button>
+            <a href="{% url 'solicitar_troca' %}"><button type="button" class="btn btn-success btn-sm" >Finalizar Troca</button></a>
+          </div>
+        </div>
       </div>
-      <div class="col-4 border border-start">
-        <label>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</label>
-      </div>
-      <div class="col-4 border border-start">
-        <label>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4 border border-start">
-        <label class="text-center"><img src="{% static 'img/bag.svg' %}"></label>
-      </div>
-      <div class="col-4 border border-start">
-        <label>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</label>
-      </div>
-      <div class="col-4 border border-start">
-        <label>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4 border border-start">
-        <label class="text-center"><img src="{% static 'img/bag.svg' %}"></label>
-      </div>
-      <div class="col-4 border border-start">
-        <label>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</label>
-      </div>
-      <div class="col-4 border border-start">
-        <label>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4 border">
-        <label class="text-center"><img src="{% static 'img/bag.svg' %}"></label>
-      </div>
-      <div class="col-4 border border-start">
-        <label>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</label>
-      </div>
-      <div class="col-4 border">
-        <label>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</label>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 
 {%endblock%}
