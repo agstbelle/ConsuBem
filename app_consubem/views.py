@@ -184,8 +184,8 @@ def add_ecobag(request, id):
             ecobag_item.save()
             messages.success(request, 'Produto adicionado à Ecobag com sucesso.')
 
-        # Redirecione para a página de produtos ou para onde desejar
-        return redirect(f'/produtos/{produto.categoria}')
+        #return redirect(f'/produtos/{produto.categoria}')
+        return redirect('ecobag')
 
     else:
         return redirect('login')
