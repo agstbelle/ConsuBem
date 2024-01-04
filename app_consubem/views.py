@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
-from .models import Perfil, Produto, Ecobag
+from .models import Perfil, Produto, Ecobag, Solicitar_troca
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -189,6 +189,24 @@ def add_ecobag(request, id):
 
     else:
         return redirect('login')
+    
+def solicitar_troca(request):
+    if request.POST:
+        nt = request.POST.get('nome_troca')
+        dt = request.POST.get('descricao_troca')
+        ct = request.POST.get('categoria_troca')
+        ect = request.POST.get('estado_troca')
+        ftot = request.FILES['foto_troca']
+        
+        novo = Solicitar_troca(nome_troca= nt, descricao_troca = dt, categoria_troca = ct, estado_troca = ect, foto_troca = ftot)
+        novo.ativo = False
+        novo.user= request.user
+        novo.save()
+        messages.success(request, 'troca solicitada')
+    else:
+        print("deu errado")
+    
+    return render (request, 'troca_item.html')
 
 
    

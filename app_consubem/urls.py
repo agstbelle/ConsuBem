@@ -10,6 +10,7 @@ urlpatterns = [
     path ('cadastro_admin', views.cadastro_admin, name="cadastro_admin"),
     path ('produtos/<int:categoria>', views.produtos, name='catalogo'),
     path ('ecobag/<int:id>/add', views.add_ecobag, name='add_ecobag'),
-    path ('ecobag', views.ecobag, name="ecobag")
+    path ('ecobag', views.ecobag, name="ecobag"),
+    path ('solicitar_troca', views.solicitar_troca, name='solicitar_troca')
     
 ]

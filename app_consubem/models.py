@@ -42,6 +42,18 @@ class Ecobag(models.Model):
      def __str__(self):
         return f"{self.usuario.username} -  {self.produto.nome_produto}"
      
+class Solicitar_troca(models.Model):
+    nome_troca = models.TextField(max_length=80)
+    categoria_troca = models.CharField(max_length=80, default = CATEGORIAS_PRODUTO.OUTRO, choices= CATEGORIAS_PRODUTO.choices)
+    estado_troca = models.CharField(max_length=80, default = ESTADO_PRODUTO.NOVO, choices= ESTADO_PRODUTO.choices)
+    descricao_troca = models.TextField(max_length=500)
+    foto_troca =  models.ImageField(upload_to="fotos_produto")
+    ativo = models.BooleanField(default=False)
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+
+
+
+     
      
 
 
